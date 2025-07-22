@@ -1,69 +1,54 @@
-# React + TypeScript + Vite
+# Linker - QR Code Generator Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[GitHub Repository](https://github.com/HimanshuKumarDutt094/linker)
 
-Currently, two official plugins are available:
+## What is this?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Linker is a browser extension that generates a QR code for the current tab's URL. It is built with React, TypeScript, Vite, and Tailwind CSS, and is designed for Chrome, Firefox, and Edge.
 
-## Expanding the ESLint configuration
+## How does it work?
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- When you click the extension icon, a popup appears showing a QR code for the URL of the tab you are currently viewing.
+- The extension uses the browser's Tabs API to securely fetch the active tab's URL. No user input or external data is ever used.
+- The QR code is generated using [qrcode.react](https://github.com/zpao/qrcode.react), and only safe http/https URLs are allowed.
+- The popup supports dark/light themes and manual theme switching.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
+## Usage
+
+1. Install the extension from the Chrome Web Store, Firefox Add-ons, or Edge Add-ons.
+2. Click the Linker icon in your browser toolbar.
+3. Scan the QR code with your mobile device to open the current page.
+
+## Security & Compliance
+
+- The extension never uses `innerHTML` or allows user input for QR code generation.
+- All URLs are validated and sanitized before QR code generation.
+- Fully compliant with Chrome/Firefox/Edge store requirements.
+
+## Attribution
+
+- [Project GitHub](https://github.com/HimanshuKumarDutt094/linker)
+- Built by Himanshu Kumar Dutt
+- Uses [qrcode.react](https://github.com/zpao/qrcode.react), [Vite](https://vitejs.dev/), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), and [vite-plugin-web-extension](https://github.com/aklinker1/vite-plugin-web-extension)
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+  files: ['**/*.{ts,tsx}'],
+  extends: [
+  // Other configs...
+  // Enable lint rules for React
+  reactX.configs['recommended-typescript'],
+  // Enable lint rules for React DOM
+  reactDom.configs.recommended,
+  ],
+  languageOptions: {
+  parserOptions: {
+  project: ['./tsconfig.node.json', './tsconfig.app.json'],
+  tsconfigRootDir: import.meta.dirname,
   },
-])
+  // other options...
+  },
+  },
+  ])
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```

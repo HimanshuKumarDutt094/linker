@@ -1,7 +1,13 @@
 {
   "name": "linker",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Browser extension that generates a QR code for the current tab's URL. Built with React, TypeScript, Vite, and Tailwind CSS.",
+  "author": "Himanshu Kumar Dutt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HimanshuKumarDutt094/linker.git"
+  },
+  "homepage": "https://github.com/HimanshuKumarDutt094/linker",
   "type": "module",
   "scripts": {
     "dev": "vite",
