@@ -25,6 +25,50 @@ Linker is a browser extension that generates a QR code for the current tab's URL
 - All URLs are validated and sanitized before QR code generation.
 - Fully compliant with Chrome/Firefox/Edge store requirements.
 
+## Build Instructions
+
+### Prerequisites
+
+- **Operating System:** Windows, macOS, or Linux
+- **Node.js:** v18 or newer ([Install Node.js](https://nodejs.org/en/download/))
+- **pnpm:** v8 or newer ([Install pnpm](https://pnpm.io/installation))
+
+### Steps
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/HimanshuKumarDutt094/linker.git
+   cd linker
+   ```
+
+2. **Install dependencies:**
+
+   ```sh
+   pnpm install
+   ```
+
+3. **Build the extension:**
+
+   ```sh
+   pnpm run build
+   ```
+
+4. **Find the build output:**
+   The extension files will be in the `dist/` directory. Zip the contents for store submission.
+
+### Development
+
+- To run locally for development:
+  ```sh
+  pnpm run dev
+  ```
+
+### Notes for Reviewers
+
+- All source files in `src/` are original and not machine-generated. Only open-source third-party libraries (see `package.json`) are bundled and minified by Vite during build.
+- No source files are transpiled, concatenated, or minified before review.
+
 ## Attribution
 
 - [Project GitHub](https://github.com/HimanshuKumarDutt094/linker)
